@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RecursosHumanosP3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cargo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cargo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="comentario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_vacacion" Type="int" Nullable="false" />
+    <Property Name="comentario" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="departamento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo_Departamento" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="encargado" Type="int" />
+  </EntityType>
+  <EntityType Name="empleado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo_Empleado" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="70" />
+    <Property Name="Apellido" Type="varchar" MaxLength="70" />
+    <Property Name="id_departamento" Type="int" />
+    <Property Name="id_cargo" Type="int" />
+    <Property Name="fecha_ingreso" Type="datetime" />
+    <Property Name="salario" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="estatus" Type="varchar" MaxLength="10" />
+    <Property Name="telefono" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="licencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+    <Property Name="motivo" Type="varchar" MaxLength="30" />
+    <Property Name="comentario" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="nomina">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="total" Type="decimal" Precision="15" Scale="2" />
+  </EntityType>
+  <EntityType Name="permiso">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+    <Property Name="desde" Type="date" />
+    <Property Name="hasta" Type="date" />
+    <Property Name="comentario" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="salida_empleado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+    <Property Name="tipo_salida" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="vacacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+    <Property Name="desde" Type="date" />
+    <Property Name="hasta" Type="date" />
+    <Property Name="anio" Type="int" />
+  </EntityType>
+  <Association Name="fk_cargo">
+    <End Role="cargo" Type="Self.cargo" Multiplicity="0..1" />
+    <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cargo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="id_cargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_departamento">
+    <End Role="departamento" Type="Self.departamento" Multiplicity="0..1" />
+    <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departamento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="id_departamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_empleado_SalidaEmpleado">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+    <End Role="salida_empleado" Type="Self.salida_empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="salida_empleado">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_empleadoDepartamento">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="0..1" />
+    <End Role="departamento" Type="Self.departamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="departamento">
+        <PropertyRef Name="encargado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_empleadoLicencia">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+    <End Role="licencia" Type="Self.licencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="licencia">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_empleadoPermiso">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+    <End Role="permiso" Type="Self.permiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="permiso">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_empleadoVacacion">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+    <End Role="vacacion" Type="Self.vacacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vacacion">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_vacacion">
+    <End Role="vacacion" Type="Self.vacacion" Multiplicity="1" />
+    <End Role="comentario" Type="Self.comentario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vacacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comentario">
+        <PropertyRef Name="id_vacacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RecursosHumanosP3ModelStoreContainer">
+    <EntitySet Name="cargo" EntityType="Self.cargo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="comentario" EntityType="Self.comentario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="departamento" EntityType="Self.departamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empleado" EntityType="Self.empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="licencia" EntityType="Self.licencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nomina" EntityType="Self.nomina" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="permiso" EntityType="Self.permiso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="salida_empleado" EntityType="Self.salida_empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vacacion" EntityType="Self.vacacion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_cargo" Association="Self.fk_cargo">
+      <End Role="cargo" EntitySet="cargo" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_departamento" Association="Self.fk_departamento">
+      <End Role="departamento" EntitySet="departamento" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_empleado_SalidaEmpleado" Association="Self.fk_empleado_SalidaEmpleado">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="salida_empleado" EntitySet="salida_empleado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_empleadoDepartamento" Association="Self.fk_empleadoDepartamento">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="departamento" EntitySet="departamento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_empleadoLicencia" Association="Self.fk_empleadoLicencia">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="licencia" EntitySet="licencia" />
+    </AssociationSet>
+    <AssociationSet Name="fk_empleadoPermiso" Association="Self.fk_empleadoPermiso">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="permiso" EntitySet="permiso" />
+    </AssociationSet>
+    <AssociationSet Name="fk_empleadoVacacion" Association="Self.fk_empleadoVacacion">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="vacacion" EntitySet="vacacion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_vacacion" Association="Self.fk_vacacion">
+      <End Role="vacacion" EntitySet="vacacion" />
+      <End Role="comentario" EntitySet="comentario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

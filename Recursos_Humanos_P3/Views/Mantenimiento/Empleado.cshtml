@@ -1,0 +1,166 @@
+﻿@model Recursos_Humanos_P3.empleado
+@{
+    Layout = null;
+
+    string error = ViewData["error"].ToString();
+    List<cargo> cargolist = new List<cargo>();
+    List<departamento> departamentolist = new List<departamento>();
+
+    foreach (var ca in ViewData["cargos"] as IEnumerable<cargo>)
+    {
+        cargo c1 = new cargo() {id=ca.id,cargo1=ca.cargo1=ca.cargo1, empleado=ca.empleado };
+
+        cargolist.Add(c1);
+    }
+
+    foreach (var dp in ViewData["departamentos"] as IEnumerable<departamento>)
+    {
+        departamento d = new departamento() { id=dp.id, Codigo_Departamento=dp.Codigo_Departamento, Nombre=dp.Nombre, empleado=dp.empleado, empleado1=dp.empleado1, encargado=dp.encargado };
+
+        departamentolist.Add(d);
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Empleado</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="icon" href="~/imagenes/icono_logo_rrhh.png">
+</head>
+<body style="background-color: rgb(242, 242, 242)">
+
+    @Html.Partial("Navbar")
+
+    @if (error != null)
+    {
+        if (error.Contains("true"))
+        {
+            <div id="btn_mensaje" style=" margin: auto; margin-top: 10px; width: 50%;">
+                <div class="alert alert-danger collapse show d-flex justify-content-end">
+                    <h5 class="mr-auto">Error al registrar empleado</h5>
+                    <button class="btn btn-outline-danger btn-sm" data-toggle="collapse" data-target="#btn_mensaje">X</button>
+                </div>
+            </div>
+
+            if (ViewData["registro_existente"] != null)
+            {
+            <div style="width:100%;">
+                <h5 style="color:red; margin: auto;" class="container">@ViewData["registro_existente"]</h5>
+            </div>
+            }
+
+        }
+        else if (error.Contains("false"))
+        {
+
+            <div id="btn_mensaje" style=" margin: auto; margin-top: 10px; width: 50%;">
+                <div class="alert alert-success collapse show d-flex justify-content-end">
+                    <h5 class="mr-auto">Empleado Registrado</h5>
+                    <button class="btn btn-outline-success btn-sm" data-toggle="collapse" data-target="#btn_mensaje">X</button>
+                </div>
+            </div>
+        }
+    }
+
+    <form class="form-group container shadow-lg mt-3" action="/Mantenimiento/Registrar_Empleado" method="post" style="border-radius: 15px; background-color: white; padding: 10px;">
+
+        <h3 class="m-2">Formulario Empleado</h3>
+
+        <div class="row ml-2 mr-2">
+            <div class="col-md-6">
+                <h5>Código Empleado</h5>
+                @Html.TextBoxFor(m => m.Codigo_Empleado, new { @class = "form-control", placeholder = "ej: emp-cont-115" })
+                @Html.ValidationMessageFor(m => m.Codigo_Empleado, "", new { style = "color:red" })
+                <!--<input type="text" name="cod_empleado" class="form-control" placeholder="ej: emp-cont-115" required="true">-->
+            </div>
+        </div>
+
+        <div class="row m-2">
+            <div class="col-md-6">
+                <h5>Nombre</h5>
+                @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control", placeholder = "Nombre" })
+                @Html.ValidationMessageFor(m => m.Nombre, "", new { style = "color:red" })
+                <!--<input type="text" name="nombre" class="form-control" placeholder="Nombre" required="true">-->
+            </div>
+
+            <div class="col-md-6">
+                <h5>Apellido</h5>
+                @Html.TextBoxFor(m => m.Apellido, new { @class = "form-control", placeholder = "Apellido" })
+                @Html.ValidationMessageFor(m => m.Apellido, "", new { style = "color:red" })
+                @*<input type="text" name="apellido" class="form-control" placeholder="Apellido" required="true">*@
+            </div>
+        </div>
+
+        <div class="row m-2">
+
+            <div class="col-md-6">
+                <h5>Teléfono</h5>
+                @Html.TextBoxFor(m => m.telefono, new { @class = "form-control", placeholder = "ej: 809-111-2222" })
+                @*<input type="text" name="telefono" class="form-control" placeholder="ej: 809-111-2222">*@
+            </div>
+
+            <div class="col-md-6">
+                <h5>Departamento</h5>
+                <select name="departamentoselect" id="" class="form-control">
+
+                    @foreach (departamento d in departamentolist)
+                    {
+                        <option value="@d.id">@d.Nombre</option>
+                    }
+                </select>
+            </div>
+
+        </div>
+
+        <div class="row m-2">
+
+            <div class="col-md-6">
+
+                <h5>Cargo</h5>
+                <select name="cargoselect" id="" class="form-control">
+
+                    @foreach (cargo c in cargolist)
+                    {
+                        <option value="@c.id">@c.cargo1</option>
+                    }
+
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <h5>Fecha Ingreso</h5>
+                @Html.TextBoxFor(m => m.fecha_ingreso, new { @class = "form-control", type = "date" })
+                @*<input type="date" name="fecha_ingreso" class="form-control">*@
+            </div>
+        </div>
+
+
+        <div class="row m-2">
+            <div class="col-md-6">
+                <h5>Estatus</h5>
+                <select name="estatus" id="" class="form-control">
+                    <option value="activo">activo</option>
+                    <option value="inactivo">inactivo</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <h5>Salario</h5>
+                @Html.TextBoxFor(m => m.salario, new { @class = "form-control", type = "number", step = ".01" })
+                @*<input type="number" name="salario" step=".01" class="form-control">*@
+            </div>
+        </div>
+
+        <button class="btn btn-outline-success btn-lg ml-4 mt-2" type="submit">Registrar</button>
+    </form>
+    <br><br>
+
+</body>
+</html>

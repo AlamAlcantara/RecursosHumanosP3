@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RecursosHumanosP3ModelStoreContainer" CdmEntityContainer="RecursosHumanosP3Entities">
+    <EntitySetMapping Name="cargo">
+      <EntityTypeMapping TypeName="RecursosHumanosP3Model.cargo">
+        <MappingFragment StoreEntitySet="cargo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cargo1" ColumnName="cargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comentario">
+      <EntityTypeMapping TypeName="RecursosHumanosP3Model.comentario">
+        <MappingFragment StoreEntitySet="comentario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_vacacion" ColumnName="id_vacacion" />
+          <ScalarProperty Name="comentario1" ColumnName="comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departamento">
+      <EntityTypeMapping TypeName="RecursosHumanosP3Model.departamento">
+        <MappingFragment StoreEntitySet="departamento">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Codigo_Departamento" ColumnName="Codigo_Departamento" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="encargado" ColumnName="encargado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empleado">
+      <EntityTypeMapping TypeName="RecursosHumanosP3Model.empleado">
+        <MappingFragment StoreEntitySet="empleado">
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Codigo_Empleado" ColumnName="Codigo_Empleado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="id_departamento" ColumnName="id_departamento" />
+          <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="salario" ColumnName="salario" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="licencia">
+      <EntityTypeMapping TypeName="RecursosHumanosP3Model.licencia">
+        <MappingFragment StoreEntitySet="licencia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="motivo" ColumnName="motivo" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nomina">
+      <EntityTypeMapping TypeName="RecursosHumanosP3Model.nomina">
+        <MappingFragment StoreEntitySet="nomina">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permiso">
+      <EntityTypeMapping TypeName="RecursosHumanosP3Model.permiso">
+        <MappingFragment StoreEntitySet="permiso">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="desde" ColumnName="desde" />
+          <ScalarProperty Name="hasta" ColumnName="hasta" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="salida_empleado">
+      <EntityTypeMapping TypeName="RecursosHumanosP3Model.salida_empleado">
+        <MappingFragment StoreEntitySet="salida_empleado">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="tipo_salida" ColumnName="tipo_salida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vacacion">
+      <EntityTypeMapping TypeName="RecursosHumanosP3Model.vacacion">
+        <MappingFragment StoreEntitySet="vacacion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="desde" ColumnName="desde" />
+          <ScalarProperty Name="hasta" ColumnName="hasta" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

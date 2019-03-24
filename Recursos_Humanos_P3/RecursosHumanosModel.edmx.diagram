@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="37d39b03e5af474d818ca6a0f04d3206" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="RecursosHumanosP3Model.cargo" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosP3Model.comentario" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosP3Model.departamento" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosP3Model.empleado" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosP3Model.licencia" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosP3Model.nomina" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosP3Model.permiso" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosP3Model.salida_empleado" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosP3Model.vacacion" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <AssociationConnector Association="RecursosHumanosP3Model.fk_cargo" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosP3Model.fk_vacacion" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosP3Model.fk_departamento" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosP3Model.fk_empleadoDepartamento" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosP3Model.fk_empleado_SalidaEmpleado" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosP3Model.fk_empleadoLicencia" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosP3Model.fk_empleadoPermiso" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosP3Model.fk_empleadoVacacion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

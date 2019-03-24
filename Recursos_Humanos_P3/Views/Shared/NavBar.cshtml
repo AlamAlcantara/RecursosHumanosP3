@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<nav class="navbar navbar-light bg-light shadow-lg justify-content-start">
+    <a class="navbar-brand" href="/RRHH/Index">
+        <img src="~/imagenes/icono_logo_rrhh.png" width="50" height="50" class="d-inline-block align-center" alt="">
+        <span>Recursos Humanos</span>
+    </a>
+
+    <div class="dropdown m-2">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="btn_dropdown" data-toggle="dropdown">Mantenimiento</button>
+
+        <div class="dropdown-menu" aria-labelledby="btn_dropdown">
+            <a class="dropdown-item" href="/Mantenimiento/Empleado">Empleado</a>
+            <a class="dropdown-item" href="/Mantenimiento/Departamento">Departamento</a>
+            <a class="dropdown-item" href="/Mantenimiento/Cargo">Cargo</a>
+        </div>
+    </div>
+
+
+
+    <div class="dropdown m-2">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="btn_dropdown_2" data-toggle="dropdown">Procesos</button>
+
+        <div class="dropdown-menu" aria-labelledby="btn_dropdown_2">
+            <a class="dropdown-item" href="">Cálculo de Nómina</a>
+            <a class="dropdown-item" href="">Salida de Empleados</a>
+            <a class="dropdown-item" href="">Vacaciones</a>
+            <a class="dropdown-item" href="">Permisos</a>
+            <a class="dropdown-item" href="">Licencias</a>
+        </div>
+    </div>
+
+    <div class="dropdown m-2">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="btn_dropdown_2" data-toggle="dropdown">Informes</button>
+
+        <div class="dropdown-menu" aria-labelledby="btn_dropdown_2">
+            <a class="dropdown-item" href="">Nóminas</a>
+            <a class="dropdown-item" href="">Empleados Activos</a>
+            <a class="dropdown-item" href="">Empleados Inactivos</a>
+            <a class="dropdown-item" href="">Departamentos</a>
+            <a class="dropdown-item" href="">Entrada de empleados por mes</a>
+            <a class="dropdown-item" href="">Salida de empleados por mes</a>
+            <a class="dropdown-item" href="">Permisos</a>
+
+        </div>
+    </div>
+
+    <a class="btn btn-success ml-auto" href="/RRHH/AcercaDe">Acerca De</a>
+
+</nav>
