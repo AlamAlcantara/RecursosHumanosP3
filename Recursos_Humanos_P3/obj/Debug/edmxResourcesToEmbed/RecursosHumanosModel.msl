@@ -47,6 +47,8 @@
     <EntitySetMapping Name="licencia">
       <EntityTypeMapping TypeName="RecursosHumanosP3Model.licencia">
         <MappingFragment StoreEntitySet="licencia">
+          <ScalarProperty Name="hasta" ColumnName="hasta" />
+          <ScalarProperty Name="desde" ColumnName="desde" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
           <ScalarProperty Name="motivo" ColumnName="motivo" />

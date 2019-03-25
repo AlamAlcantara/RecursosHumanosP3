@@ -18,6 +18,8 @@ namespace Recursos_Humanos_P3
         public int id_empleado { get; set; }
         public string motivo { get; set; }
         public string comentario { get; set; }
+        public System.DateTime desde { get; set; }
+        public System.DateTime hasta { get; set; }
     
         public virtual empleado empleado { get; set; }
     }

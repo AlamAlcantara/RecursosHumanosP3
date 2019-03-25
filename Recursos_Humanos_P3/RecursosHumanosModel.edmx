@@ -52,6 +52,8 @@
           <Property Name="id_empleado" Type="int" Nullable="false" />
           <Property Name="motivo" Type="varchar" MaxLength="30" />
           <Property Name="comentario" Type="varchar" MaxLength="200" />
+          <Property Name="desde" Type="datetime" Nullable="false" />
+          <Property Name="hasta" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="nomina">
           <Key>
@@ -291,6 +293,8 @@
           <Property Name="motivo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="comentario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="empleado" Relationship="Self.fk_empleadoLicencia" FromRole="licencia" ToRole="empleado" />
+          <Property Name="desde" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hasta" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="nomina">
           <Key>
@@ -523,6 +527,8 @@
           <EntitySetMapping Name="licencia">
             <EntityTypeMapping TypeName="RecursosHumanosP3Model.licencia">
               <MappingFragment StoreEntitySet="licencia">
+                <ScalarProperty Name="hasta" ColumnName="hasta" />
+                <ScalarProperty Name="desde" ColumnName="desde" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
                 <ScalarProperty Name="motivo" ColumnName="motivo" />

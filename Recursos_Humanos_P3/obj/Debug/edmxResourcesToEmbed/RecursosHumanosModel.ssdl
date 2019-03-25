@@ -47,6 +47,8 @@
     <Property Name="id_empleado" Type="int" Nullable="false" />
     <Property Name="motivo" Type="varchar" MaxLength="30" />
     <Property Name="comentario" Type="varchar" MaxLength="200" />
+    <Property Name="desde" Type="datetime" Nullable="false" />
+    <Property Name="hasta" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="nomina">
     <Key>

@@ -11,7 +11,6 @@ namespace Recursos_Humanos_P3
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class departamento
     {
@@ -22,11 +21,7 @@ namespace Recursos_Humanos_P3
         }
     
         public int id { get; set; }
-
-        [Required(ErrorMessage ="El codigo del departamento es requerido")]
         public string Codigo_Departamento { get; set; }
-
-        [Required(ErrorMessage = "El nombre del departamento es requerido")]
         public string Nombre { get; set; }
         public Nullable<int> encargado { get; set; }
     

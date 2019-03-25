@@ -11,7 +11,6 @@ namespace Recursos_Humanos_P3
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class cargo
     {
@@ -22,8 +21,6 @@ namespace Recursos_Humanos_P3
         }
     
         public int id { get; set; }
-
-        [Required(ErrorMessage ="El nombre del cargo en requerido")]
         public string cargo1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
