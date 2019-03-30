@@ -38,12 +38,23 @@ namespace Recursos_Humanos_P3.Controllers
             }
             else
             {
-                db.nomina.Add(n);
-                db.SaveChanges();
-                ViewData["error"] = error;
-                n.total = getTotalNomina();
-                ViewData["cant_empleados"] = getTotalEmpleados();
-                return View("CalculoNomina",n);
+                try
+                {
+                    db.nomina.Add(n);
+                    db.SaveChanges();
+                    ViewData["error"] = error;
+                    n.total = getTotalNomina();
+                    ViewData["cant_empleados"] = getTotalEmpleados();
+                    return View("CalculoNomina", n);
+                }
+                catch (Exception e)
+                {
+                    error = "true";
+                    ViewData["error"] = error;
+                    ViewData["cant_empleados"] = getTotalEmpleados();
+                    n.total = getTotalNomina();
+                    return View("CalculoNomina");
+                }
             }
 
         }

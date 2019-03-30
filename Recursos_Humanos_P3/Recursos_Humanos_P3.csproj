@@ -141,6 +141,7 @@
       <DependentUpon>RecursosHumanosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformesController.cs" />
     <Compile Include="Controllers\MantenimientoController.cs" />
     <Compile Include="Controllers\ProcesosController.cs" />
     <Compile Include="Controllers\RRHHController.cs" />
@@ -258,6 +259,13 @@
     <Content Include="Views\Procesos\Vacacion.cshtml" />
     <Content Include="Views\Procesos\Permiso.cshtml" />
     <Content Include="Views\Procesos\Licencia.cshtml" />
+    <Content Include="Views\Informes\Nominas.cshtml" />
+    <Content Include="Views\Shared\NavBarNominas.cshtml" />
+    <Content Include="Views\Informes\Empleados_Activos.cshtml" />
+    <Content Include="Views\Shared\NavBarEmpleados.cshtml" />
+    <Content Include="Views\Shared\NavBarEmpleadosInactivos.cshtml" />
+    <Content Include="Views\Informes\Empleados_Inactivos.cshtml" />
+    <Content Include="Views\Informes\Departamentos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
