@@ -199,6 +199,7 @@
     <Content Include="imagenes\foto_1.jpg" />
     <Content Include="imagenes\Hydrogen.jpg" />
     <Content Include="imagenes\icono_logo_rrhh.png" />
+    <Content Include="imagenes\icono_user_title_tab.png" />
     <Content Include="imagenes\img_empleados_activos.jpg" />
     <Content Include="imagenes\img_nomina.jpg" />
     <Content Include="imagenes\img_registrar.jpg" />

@@ -11,6 +11,7 @@ namespace Recursos_Humanos_P3
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class empleado
     {
@@ -23,10 +24,14 @@ namespace Recursos_Humanos_P3
             this.permiso = new HashSet<permiso>();
             this.vacacion = new HashSet<vacacion>();
         }
-    
+        
+        
         public int id { get; set; }
+        [Required(ErrorMessage = "El código del empleado es requerido")]
         public string Codigo_Empleado { get; set; }
+        [Required(ErrorMessage = "El nombre del empleado es requerido")]
         public string Nombre { get; set; }
+        [Required(ErrorMessage = "El apellido del empleado es requerido")]
         public string Apellido { get; set; }
         public Nullable<int> id_departamento { get; set; }
         public Nullable<int> id_cargo { get; set; }

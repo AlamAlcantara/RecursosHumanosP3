@@ -161,6 +161,39 @@ namespace Recursos_Humanos_P3.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Asignar_Encargado_Departamento()
+        {
+            int id_empleado = Convert.ToInt32(Request.Form["id_empleado"].ToString());
+            int id_departamento = Convert.ToInt32(Request.Form["id_departamento"].ToString());
+
+            Boolean existe = false;
+            empleado e = db.empleado.Where(x => x.id == id_empleado).FirstOrDefault();
+
+            if (e!=null)
+            {
+                existe = true;
+            }
+
+            if (existe == true)
+            {
+
+                departamento d = db.departamento.Where(x => x.id == id_departamento).FirstOrDefault();
+                d.encargado = id_empleado;
+                db.SaveChanges();
+
+                List<departamento> departamentos = db.departamento.ToList();
+                ViewData["departamentos"] = departamentos;
+                return View("Departamentos");
+            }
+            else
+            {
+                List<departamento> departamentos = db.departamento.ToList();
+                ViewData["departamentos"] = departamentos;
+                return View("Departamentos");
+            }
+        }
+        //--------------------------------------------------------------------------------------------
         public ActionResult Cargos()
         {
             List<cargo> cargos = db.cargo.ToList();
@@ -170,7 +203,7 @@ namespace Recursos_Humanos_P3.Controllers
 
         public ActionResult Entrada_Empleados()
         {
-            List<empleado> empleados = db.empleado.ToList();
+            List<empleado> empleados = db.empleado.OrderBy(x => x.fecha_ingreso.Value.Month).ToList();
             ViewData["empleados"] = empleados;
             return View();
         }
@@ -194,7 +227,7 @@ namespace Recursos_Humanos_P3.Controllers
 
         public ActionResult Lista_Salida_Empleados()
         {
-            List<salida_empleado> salidas = db.salida_empleado.ToList();
+            List<salida_empleado> salidas = db.salida_empleado.OrderBy(x => x.fecha_salida).ToList();
             ViewData["salidas"] = salidas;
             return View();
         }
