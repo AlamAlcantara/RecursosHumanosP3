@@ -1,0 +1,65 @@
+﻿@model Recursos_Humanos_P3.salida_empleado
+@{
+    Layout = null;
+
+    List<salida_empleado> salidas = new List<salida_empleado>();
+    if (ViewData["salidas"]!=null)
+    {
+        foreach (salida_empleado s in ViewData["salidas"] as IEnumerable<salida_empleado>)
+        {
+            salidas.Add(s);
+        }
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salida Empleados</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    @Html.Partial("NavBar_Salidas")
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id Salida</th>
+                <th>Id Empleado</th>
+                <th>Tipo Salida</th>
+                <th>Motivo</th>
+                <th>Fecha Salida</th>
+                <th>Información</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (salida_empleado s in salidas)
+            {
+            <tr>
+                <th>@s.id</th>
+                <th>@s.id_empleado</th>
+                <th>@s.tipo_salida</th>
+                <th>@s.motivo</th>
+                <th>@s.fecha_salida.Value.Date.ToString("d")</th>
+                <th>
+                    
+                <form action="/Informes/Informacion_Empleado_Salida" method="post">
+                    <button class="btn btn-primary" type="submit">Informacion del Empleado</button>
+                    <input name="id_empleado" value="@s.id_empleado" class="collapse" />
+                </form>
+                
+                </th>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+
+</body>
+</html>

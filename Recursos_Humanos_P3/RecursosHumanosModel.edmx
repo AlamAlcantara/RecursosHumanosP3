@@ -80,6 +80,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_empleado" Type="int" Nullable="false" />
           <Property Name="tipo_salida" Type="varchar" MaxLength="20" />
+          <Property Name="motivo" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_salida" Type="datetime" />
         </EntityType>
         <EntityType Name="vacacion">
           <Key>
@@ -323,6 +325,8 @@
           <Property Name="id_empleado" Type="Int32" Nullable="false" />
           <Property Name="tipo_salida" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="empleado" Relationship="Self.fk_empleado_SalidaEmpleado" FromRole="salida_empleado" ToRole="empleado" />
+          <Property Name="motivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_salida" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="vacacion">
           <Key>
@@ -559,6 +563,8 @@
           <EntitySetMapping Name="salida_empleado">
             <EntityTypeMapping TypeName="RecursosHumanosP3Model.salida_empleado">
               <MappingFragment StoreEntitySet="salida_empleado">
+                <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
                 <ScalarProperty Name="tipo_salida" ColumnName="tipo_salida" />

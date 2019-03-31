@@ -88,13 +88,13 @@
             <form action="/Procesos/Confirmar_Salida" method="post" style="background-color: white; border-radius: 5px; padding: 20px;" class="form-group shadow-lg mt-3 col-md-6 col-xs-6 m-4">
                 <h2 class="mb-3">Información del Empleado</h2>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <h4>Id: <span>@Html.DisplayTextFor(e => e.id)</span></h4>
                         <input type="text" name="id_empleado_e" value="@id_empleado" class="collapse" />
-                       
+
                     </div>
 
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <h4>Código: <span>@Html.DisplayTextFor(e => e.Codigo_Empleado)</span></h4>
 
                     </div>
@@ -130,23 +130,34 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <h5>Estatus: <span class="ml-2">@Html.DisplayTextFor(e => e.estatus)</span></h5>
                     </div>
 
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <h5>Teléfono: <span class="ml-2">@Html.DisplayTextFor(e => e.telefono)</span></h5>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-5">
-                        <h5>Causa</h5>
+                    <div class="col-md-6">
+                        <h5>Causa:</h5>
                         <select name="causa_salida" class="form-control">
                             <option value="renuncia">Renuncia</option>
                             <option value="despido">Despido</option>
                             <option value="deshaucio">Deshaucio</option>
                         </select>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Motivo: <input type="text" name="motivo_salida" class="form-control" placeholder="motivo" /> </h5>
+                    </div>
+
+                </div>
+
+                <div class="row mt-2">
+                    <div class=" col-md-6">
+                        <h5>Fecha de salida:</h5>
+                        <input type="date" name="fecha_salida" class="form-control" />
                     </div>
                 </div>
 

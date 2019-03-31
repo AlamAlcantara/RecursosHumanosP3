@@ -17,6 +17,8 @@ namespace Recursos_Humanos_P3
         public int id { get; set; }
         public int id_empleado { get; set; }
         public string tipo_salida { get; set; }
+        public string motivo { get; set; }
+        public Nullable<System.DateTime> fecha_salida { get; set; }
     
         public virtual empleado empleado { get; set; }
     }

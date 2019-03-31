@@ -89,6 +89,8 @@
     <Property Name="id_empleado" Type="Int32" Nullable="false" />
     <Property Name="tipo_salida" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="empleado" Relationship="Self.fk_empleado_SalidaEmpleado" FromRole="salida_empleado" ToRole="empleado" />
+    <Property Name="motivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_salida" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="vacacion">
     <Key>

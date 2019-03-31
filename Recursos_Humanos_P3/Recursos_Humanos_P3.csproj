@@ -266,6 +266,14 @@
     <Content Include="Views\Shared\NavBarEmpleadosInactivos.cshtml" />
     <Content Include="Views\Informes\Empleados_Inactivos.cshtml" />
     <Content Include="Views\Informes\Departamentos.cshtml" />
+    <Content Include="Views\Informes\Cargos.cshtml" />
+    <Content Include="Views\Informes\Entrada_Empleados.cshtml" />
+    <Content Include="Views\Shared\NavBar_Entrada_Empleados.cshtml" />
+    <Content Include="Views\Informes\Lista_Salida_Empleados.cshtml" />
+    <Content Include="Views\Shared\NavBar_Salidas.cshtml" />
+    <Content Include="Views\Informes\Informacion_Empleado_Salida.cshtml" />
+    <Content Include="Views\Informes\Permisos.cshtml" />
+    <Content Include="Views\Shared\NavBar_Permisos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

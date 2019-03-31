@@ -75,6 +75,8 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_empleado" Type="int" Nullable="false" />
     <Property Name="tipo_salida" Type="varchar" MaxLength="20" />
+    <Property Name="motivo" Type="varchar" MaxLength="50" />
+    <Property Name="fecha_salida" Type="datetime" />
   </EntityType>
   <EntityType Name="vacacion">
     <Key>

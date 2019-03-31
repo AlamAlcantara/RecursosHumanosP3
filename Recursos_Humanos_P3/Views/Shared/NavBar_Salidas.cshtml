@@ -3,9 +3,8 @@
     Layout = null;
 }
 
-
 <nav class="navbar navbar-light bg-light shadow-lg justify-content-start">
-    <a class="navbar-brand" href="/RRHH/Index">
+    <a class="navbar-brand"  href="/RRHH/Index">
         <img src="~/imagenes/icono_logo_rrhh.png" width="50" height="50" class="d-inline-block align-center" alt="">
         <span>Recursos Humanos</span>
     </a>
@@ -50,9 +49,9 @@
         </div>
     </div>
 
-    <form action="/Informes/Buscar_Nominas" class="form-inline ml-auto row" method="post">
+    <form action="/Informes/Buscar_Salida_Mes" class="form-inline ml-auto" method="post">
 
-        <select name="mes_nomina" class="form-control col-md-4 mr-1">
+        <select name="mes_salida" id="" class="form-control mr-1">
             <option value="">Mes</option>
             <option value="1">Enero</option>
             <option value="2">Febrero</option>
@@ -68,9 +67,7 @@
             <option value="12">Diciembre</option>
         </select>
 
-        <input class="form-control col-md-3" type="number" name="anio_nomina" min="1960" placeholder="año">
-
-        <button class="btn btn-success col-md-2" type="submit" style="margin-left: 5px;">Buscar</button>
+        <button class="btn btn-success " type="submit" style="margin-left: 5px;">Buscar</button>
     </form>
 
 </nav>

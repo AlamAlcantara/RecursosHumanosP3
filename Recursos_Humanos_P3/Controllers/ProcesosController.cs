@@ -84,6 +84,8 @@ namespace Recursos_Humanos_P3.Controllers
                 salida_empleado salida = new salida_empleado();
                 salida.tipo_salida = causa;
                 salida.id_empleado = Convert.ToInt32(Request.Form["id_empleado_e"].ToString());
+                salida.motivo = Request.Form["motivo_salida"].ToString();
+                salida.fecha_salida = Convert.ToDateTime(Request.Form["fecha_salida"].ToString());
 
                 db.salida_empleado.Add(salida);
                 db.SaveChanges();
