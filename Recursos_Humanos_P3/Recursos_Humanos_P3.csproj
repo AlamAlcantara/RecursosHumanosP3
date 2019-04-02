@@ -275,6 +275,7 @@
     <Content Include="Views\Informes\Informacion_Empleado_Salida.cshtml" />
     <Content Include="Views\Informes\Permisos.cshtml" />
     <Content Include="Views\Shared\NavBar_Permisos.cshtml" />
+    <Content Include="Views\Procesos\Editar_Empleado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

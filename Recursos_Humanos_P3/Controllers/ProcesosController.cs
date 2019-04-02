@@ -294,5 +294,109 @@ namespace Recursos_Humanos_P3.Controllers
             }
 
         }
+
+        //-----------------------------------------------------------------------------
+
+        public ActionResult Editar_Empleado()
+        {
+            ViewData["departamentos"] = cargar_departamentos();
+            ViewData["cargos"] = cargar_cargos();
+            ViewData["error"] = "";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Buscar_Empleado_Editar()
+        {
+            string cod_empleado = "";
+            
+
+            if(Request.Form["cod_empleado"]!=null && Request.Form["cod_empleado"] != "")
+            {
+                cod_empleado = Request.Form["cod_empleado"].ToString();
+                empleado e = db.empleado.Where(x => x.Codigo_Empleado == cod_empleado).FirstOrDefault();
+
+                if (e != null)
+                {
+                    ViewData["departamentos"] = cargar_departamentos();
+                    ViewData["cargos"] = cargar_cargos();
+                    ViewData["error"] = "";
+                    return View("Editar_Empleado", e);
+                }
+                else
+                {
+                    ViewData["departamentos"] = cargar_departamentos();
+                    ViewData["cargos"] = cargar_cargos();
+                    ViewData["error"] = "";
+                    return View("Editar_Empleado");
+                }
+
+                
+            }
+            else
+            {
+                return View("Editar_Empleado");
+            }
+
+            
+        }
+
+        [HttpPost]
+        public ActionResult Actualizar_Empleado(empleado e)
+        {
+            try
+            {
+                string cod = Request.Form["cod_empleado"].ToString();
+                empleado em = db.empleado.Where(x => x.Codigo_Empleado == cod).FirstOrDefault();
+
+
+                em.Nombre = Request.Form["nombre"].ToString();
+                em.Apellido = Request.Form["apellido"].ToString();
+                em.salario = Convert.ToDecimal(Request.Form["salario"]);
+                em.fecha_ingreso = Convert.ToDateTime(Request.Form["fecha_ingreso"]);
+                em.id_departamento = Convert.ToInt32(Request.Form["departamentoselect"].ToString());
+                em.id_cargo = Convert.ToInt32(Request.Form["cargoselect"].ToString());
+                em.telefono = Request.Form["telefono"].ToString();
+                em.estatus = Request.Form["estatus"].ToString();
+
+                db.SaveChanges();
+
+                ViewData["departamentos"] = cargar_departamentos();
+                ViewData["cargos"] = cargar_cargos();
+                ViewData["error"] = "false";
+                return View("Editar_Empleado");
+            }
+            catch (Exception ex)
+            {
+                ViewData["departamentos"] = cargar_departamentos();
+                ViewData["cargos"] = cargar_cargos();
+                ViewData["error"] = "true";
+                return View("Editar_Empleado");
+            }
+        }
+
+        public List<cargo> cargar_cargos()
+        {
+            List<cargo> cargoslist = new List<cargo>();
+
+            foreach (cargo c in db.cargo)
+            {
+                cargoslist.Add(c);
+            }
+
+            return cargoslist;
+        }
+
+        public List<departamento> cargar_departamentos()
+        {
+            List<departamento> departamentoslist = new List<departamento>();
+
+            foreach (departamento d in db.departamento)
+            {
+                departamentoslist.Add(d);
+            }
+
+            return departamentoslist;
+        }
     }
 }
